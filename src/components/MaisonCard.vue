@@ -1,7 +1,7 @@
 <script setup lang="ts">
-  import type { maisonRecord } from '@/types'
+import type {MaisonRecord} from '@/pocketbase-types'
 
-  defineProps<maisonRecord>()
+defineProps<MaisonRecord>()
 </script>
 <template>
   <div

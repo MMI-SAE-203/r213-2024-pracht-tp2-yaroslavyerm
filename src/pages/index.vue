@@ -1,13 +1,13 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <script setup lang="ts">
-import type { maisonRecord } from '@/types'
+import { Collections, type MaisonResponse } from '@/pocketbase-types'
 import MaisonCard from '@/components/MaisonCard.vue'
 
-const maisonListe : maisonRecord [] = [
+const maisonListe : MaisonResponse [] = [
   {
     "adresse": "123 Rue Principale",
-    "collectionId": "dc4i7b7ouwdl0zb",
-    "collectionName": "Maison",
+    "collectionId":  "dc4i7b7ouwdl0zb",
+    "collectionName": Collections.Maison,
     "created": "2024-04-12 08:41:43.109Z",
     "favori": true,
     "id": "65bhl532dlta6ir",
@@ -86,5 +86,6 @@ console.log(maisonListe);
 
 <template>
   <h1 class="text-2xl">Bonjour monde !</h1>
+ <MaisonCard v-bind="maisonListe[0]"/>
  <MaisonCard v-for="maisonRecord in maisonListe" :key="maisonRecord.nomMaison" v-bind="maisonRecord" />
 </template>
