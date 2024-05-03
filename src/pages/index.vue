@@ -86,5 +86,5 @@ console.log(maisonListe);
 
 <template>
   <h1 class="text-2xl">Bonjour monde !</h1>
- <MaisonCard v-bind="maisonListe[0]"/>
+ <MaisonCard v-for="maisonRecord in maisonListe" :key="maisonRecord.nomMaison" v-bind="maisonRecord" />
 </template>
