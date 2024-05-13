@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type {MaisonRecord} from '@/pocketbase-types'
-
-defineProps<MaisonRecord>()
+import type {MaisonResponse} from '@/pocketbase-types'
+import ImgPb from './ImgPb.vue'
+const props = defineProps<MaisonResponse>()
 </script>
 <template>
   <div
@@ -11,10 +11,7 @@ defineProps<MaisonRecord>()
     <div
       class="w-[394.67px] h-[200px] absolute left-[-0.5px] top-[-0.5px] rounded-tl-lg rounded-tr-lg bg-gray-500"
     ></div>
-    <img
-      src=""
-      class="w-[394.67px] h-[235px] absolute left-[-0.5px] top-[-24.5px] object-cover"
-    />
+    <ImgPb :record="props" :filename="image" :width="387" :height="235" class="w-[394.67px] h-[235px] absolute left-[-0.5px] top-[-2.5px] object-cover" />
   </div>
   <div
     class="flex flex-col justify-start items-start self-stretch flex-grow-0 flex-shrink-0 relative gap-[15px] px-5 py-[30px]"
@@ -39,7 +36,7 @@ defineProps<MaisonRecord>()
         width="49"
         height="48"
         viewBox="0 0 49 48"
-        fill="none"
+        :fill="favori? 'red':'none'"
         xmlns="http://www.w3.org/2000/svg"
         class="flex-grow-0 flex-shrink-0 w-12 h-12"
         preserveAspectRatio="xMidYMid meet"

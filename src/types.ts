@@ -5,7 +5,7 @@ export interface maisonRecord {
     created: string;
     favori: boolean;
     id: string;
-    images: string;
+    image: string;
     nbChambres: number;
     nbSdb: number;
     nomMaison: string;
