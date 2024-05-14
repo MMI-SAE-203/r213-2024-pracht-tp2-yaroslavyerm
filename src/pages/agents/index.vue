@@ -2,25 +2,25 @@
 <script setup lang="ts">
 import { pb } from '@/backend'
 
-const maisonListe = await pb.collection("Maison").getFullList()
-console.log(maisonListe);
+const agentListe = await pb.collection("Agent").getFullList()
+console.log(agentListe);
 
 </script>
 
 <template>
-  <h1 class="text-2xl">Toutes les offres</h1>
+  <h1 class="text-2xl">Toutes les agents</h1>
 <ul>
-  <li v-for="uneMaison of maisonListe" :v-key="uneMaison.id">
+  <li v-for="unAgent of agentListe" :v-key="unAgent.id">
     <RouterLink
       :to="{
-        name: '/offres/[id]',
+        name: '/agents/[id]',
         params: {
-          id: uneMaison.id
+          id: unAgent.id
         }
       }"
       class="text-red-400 hover:text-red-600"
     >
-      {{ uneMaison.nomMaison }}
+      {{ unAgent.nom }}
     </RouterLink>
   </li>
 </ul>
