@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import MaisonCard from '@/components/MaisonCard.vue'
-    import { pb } from '@/backend'
+  import { pb } from '@/backend'
   import { useRoute } from 'vue-router/auto'
 
   const route = useRoute('/offres/[id]')

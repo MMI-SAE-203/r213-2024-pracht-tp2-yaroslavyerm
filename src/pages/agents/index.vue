@@ -8,7 +8,7 @@ console.log(agentListe);
 </script>
 
 <template>
-  <h1 class="text-2xl">Toutes les agents</h1>
+  <h1 class="text-2xl">Tous les agents</h1>
 <ul>
   <li v-for="unAgent of agentListe" :v-key="unAgent.id">
     <RouterLink
@@ -20,7 +20,7 @@ console.log(agentListe);
       }"
       class="text-red-400 hover:text-red-600"
     >
-      {{ unAgent.nom }}
+      {{ unAgent.nom + ' ' + unAgent.prenom}}
     </RouterLink>
   </li>
 </ul>
