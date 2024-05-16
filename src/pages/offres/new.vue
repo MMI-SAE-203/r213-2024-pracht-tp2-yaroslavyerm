@@ -22,6 +22,22 @@ const submit = async (event: Event) => {
       <input type="text" id="adresse" name="adresse"  class="border-2 border-black rounded-md ml-1"/>
     </div>
     <div class="mb-1">
+      <label for="adresse">Photo</label>
+      <input type="file" id="image" name="image" accept="image/png, image/jpeg, image/webp"  class="border-2 border-black rounded-md ml-1"/>
+    </div>
+    <div class="mb-1">
+      <label for="prix">Surface</label>
+      <input type="number" id="surface" name="surface"  class="border-2 border-black rounded-md ml-1"/>
+    </div>
+    <div class="mb-1">
+      <label for="prix">Nombre des chambres</label>
+      <input type="number" id="nbChambres" name="nbChambres"  class="border-2 border-black rounded-md ml-1"/>
+    </div>
+    <div class="mb-1">
+      <label for="prix">Nombre des salles de bain</label>
+      <input type="number" id="nbSdb" name="nbSdb"  class="border-2 border-black rounded-md ml-1"/>
+    </div>
+    <div class="mb-1">
       <label for="prix">Prix</label>
       <input type="number" id="prix" name="prix"  class="border-2 border-black rounded-md ml-1"/>
     </div>
