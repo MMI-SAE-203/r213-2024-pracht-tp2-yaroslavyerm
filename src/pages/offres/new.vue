@@ -47,4 +47,6 @@ const submit = async (event: Event) => {
     </div>
     <button type="submit" class="border-2 border-black rounded-md px-1">Créer</button>
   </form>
+
+  <FormKit type="text"/>
 </template>
