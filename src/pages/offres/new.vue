@@ -2,17 +2,21 @@
 import { pb } from '@/backend'
 import { useRouter } from 'vue-router/auto'
 const router = useRouter()
-const submit = async (event: Event) => {
+/* const submit = async (event: Event) => {
   event.preventDefault()
   const form = event.target as HTMLFormElement
   const formData = new FormData(form)
   const newMaison = await pb.collection('maison').create(formData)
   router.push({ name: '/offres/[id]', params: { id: newMaison.id } })
+} */
+
+const submit = async (fields) => {
+  alert(JSON.stringify(fields))
 }
 </script>
 <template>
   <h1 class="text-2xl">Créer une nouvelle maison</h1>
-  <form method="post" @submit="submit">
+  <!-- <form method="post" @submit="submit">
     <div class="mb-1">
       <label for="nomMaison">Nom de la maison</label>
       <input type="text" id="nomMaison" name="nomMaison"  class="border-2 border-black rounded-md ml-1"/>
@@ -46,7 +50,62 @@ const submit = async (event: Event) => {
       <input type="checkbox" id="favori" name="favori" value="true" class="ml-1" />
     </div>
     <button type="submit" class="border-2 border-black rounded-md px-1">Créer</button>
-  </form>
+  </form> -->
 
-  <FormKit type="text"/>
+  <FormKit type="form" @submit="submit" method="post" submit-label="Créer">
+    <FormKit 
+    type="text" 
+    id="nomMaison" 
+    name="nomMaison" 
+    label="Nom de maison" 
+    placeholder="Loft Urbain" 
+    help="Entrez le nom de maison"/>
+    <FormKit 
+    type="text" 
+    id="adresse" 
+    name="adresse" 
+    label="Adress de maison" 
+    placeholder="123 Grand Rue" 
+    help="Entrez l'adresse de maison"/>
+    <FormKit 
+    type="file" 
+    id="image" 
+    name="image" 
+    label="Photo"  
+    help="Ajoutez une photo"
+    multiple="false"
+    accept=".png, .jpg, .webp"/>
+    <FormKit 
+    type="number" 
+    id="surface" 
+    name="surface" 
+    label="Surface"  
+    help="Entrez la surface de la maison"
+    placeholder="390"/>
+    <FormKit 
+    type="number" 
+    id="nbChambres" 
+    name="nbChambres" 
+    label="Nombre des chambres"  
+    help="Entrez le nombre des chambres"
+    placeholder="2"/>
+    <FormKit 
+    type="number" 
+    id="nbSdb" 
+    name="nbSdb" 
+    label="Nombre des salles de bain"  
+    help="Entrez le nombre des salles de bain"
+    placeholder="2.5"/>
+    <FormKit 
+    type="number" 
+    id="prix" 
+    name="prix" 
+    label="Prix"  
+    help="Entrez la prix de maison"
+    placeholder="100000"/>
+    <FormKit type="checkbox"
+    id="favori" name="favori"
+    help="Mettre le en favori?"
+    label="Favori"/>
+  </FormKit>
 </template>

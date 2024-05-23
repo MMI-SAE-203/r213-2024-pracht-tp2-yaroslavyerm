@@ -10,7 +10,7 @@ console.log(agentListe);
 <template>
   <h1 class="text-2xl">Tous les agents</h1>
 <ul>
-  <li v-for="unAgent of agentListe" :v-key="unAgent.id">
+  <li v-for="unAgent of agentListe" :key="unAgent.id">
     <RouterLink
       :to="{
         name: '/agents/[id]',
