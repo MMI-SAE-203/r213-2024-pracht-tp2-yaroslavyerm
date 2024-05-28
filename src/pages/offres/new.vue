@@ -2,17 +2,21 @@
 import { pb } from '@/backend'
 import { useRouter } from 'vue-router/auto'
 const router = useRouter()
-/* const submit = async (event: Event) => {
-  event.preventDefault()
-  const form = event.target as HTMLFormElement
-  const formData = new FormData(form)
-  const newMaison = await pb.collection('maison').create(formData)
-  router.push({ name: '/offres/[id]', params: { id: newMaison.id } })
-} */
-
-const submit = async (fields) => {
-  alert(JSON.stringify(fields))
+const submit = async (formData: { [key: string]: any; } | FormData | undefined) => {
+  try {
+    const newMaison = await pb.collection('maison').create(formData)
+    router.push({ name: '/offres/[id]', params: { id: newMaison.id } })
+  } catch (error) {
+    console.error("Error creating maison:", error)
+  }
 }
+
+fileInput.addEventListener('change', function () {
+    for (let file of fileInput.files) {
+        formData.append('image', formData.image[0].file);
+    }
+});
+
 </script>
 <template>
   <h1 class="text-2xl">Créer une nouvelle maison</h1>
@@ -52,60 +56,66 @@ const submit = async (fields) => {
     <button type="submit" class="border-2 border-black rounded-md px-1">Créer</button>
   </form> -->
 
-  <FormKit type="form" @submit="submit" method="post" submit-label="Créer">
+  <FormKit 
+    type="form" 
+    @submit="submit" 
+    method="post" 
+    submit-label="Créer">
     <FormKit 
-    type="text" 
-    id="nomMaison" 
-    name="nomMaison" 
-    label="Nom de maison" 
-    placeholder="Loft Urbain" 
-    help="Entrez le nom de maison"/>
+      type="text" 
+      id="nomMaison" 
+      name="nomMaison" 
+      label="Nom de maison" 
+      placeholder="Loft Urbain" 
+      help="Entrez le nom de maison"/>
     <FormKit 
-    type="text" 
-    id="adresse" 
-    name="adresse" 
-    label="Adress de maison" 
-    placeholder="123 Grand Rue" 
-    help="Entrez l'adresse de maison"/>
+      type="text" 
+      id="adresse" 
+      name="adresse" 
+      label="Adresse de maison" 
+      placeholder="123 Grand Rue" 
+      help="Entrez l'adresse de maison"/>
     <FormKit 
-    type="file" 
-    id="image" 
-    name="image" 
-    label="Photo"  
-    help="Ajoutez une photo"
-    multiple="false"
-    accept=".png, .jpg, .webp"/>
+      type="file" 
+      id="image" 
+      name="image" 
+      label="Photo"  
+      help="Ajoutez une photo"
+      multiple="false"
+      accept=".png, .jpg, .webp"/>
     <FormKit 
-    type="number" 
-    id="surface" 
-    name="surface" 
-    label="Surface"  
-    help="Entrez la surface de la maison"
-    placeholder="390"/>
+      type="number" 
+      id="surface" 
+      name="surface" 
+      label="Surface"  
+      help="Entrez la surface de la maison"
+      placeholder="390"/>
     <FormKit 
-    type="number" 
-    id="nbChambres" 
-    name="nbChambres" 
-    label="Nombre des chambres"  
-    help="Entrez le nombre des chambres"
-    placeholder="2"/>
+      type="number" 
+      id="nbChambres" 
+      name="nbChambres" 
+      label="Nombre des chambres"  
+      help="Entrez le nombre des chambres"
+      placeholder="2"/>
     <FormKit 
-    type="number" 
-    id="nbSdb" 
-    name="nbSdb" 
-    label="Nombre des salles de bain"  
-    help="Entrez le nombre des salles de bain"
-    placeholder="2.5"/>
+      type="number" 
+      id="nbSdb" 
+      name="nbSdb" 
+      label="Nombre des salles de bain"  
+      help="Entrez le nombre des salles de bain"
+      placeholder="2.5"/>
     <FormKit 
-    type="number" 
-    id="prix" 
-    name="prix" 
-    label="Prix"  
-    help="Entrez la prix de maison"
-    placeholder="100000"/>
-    <FormKit type="checkbox"
-    id="favori" name="favori"
-    help="Mettre le en favori?"
-    label="Favori"/>
+      type="number" 
+      id="prix" 
+      name="prix" 
+      label="Prix"  
+      help="Entrez le prix de la maison"
+      placeholder="100000"/>
+    <FormKit 
+      type="checkbox"
+      id="favori" 
+      name="favori"
+      help="Mettre le en favori?"
+      label="Favori"/>
   </FormKit>
 </template>

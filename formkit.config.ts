@@ -1,6 +1,6 @@
 import { genesisIcons } from "@formkit/icons"
-import { rootClasses } from './formkit.theme.ts'
-import { DefaultConfigOptions } from '@formkit/vue'
+import { rootClasses } from './formkit.theme'
+import type { DefaultConfigOptions } from '@formkit/vue'
 
 const config: DefaultConfigOptions = {
   icons: { ...genesisIcons },
